@@ -15,6 +15,6 @@ void main() {
           bodyText2: TextStyle(color: Colors.black)),
     ),
     debugShowCheckedModeBanner: false,
-    home: const MainPage(),
+    home: MainPage(),
   ));
 }

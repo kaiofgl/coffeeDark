@@ -13,26 +13,13 @@ import 'dart:developer';
 import 'package:flutter/rendering.dart';
 
 class MainPage extends StatefulWidget {
-  final Widget child;
-
-  const MainPage({
-    Key? key,
-    required this.child,
-  }) : super(key: key);
+  MainPage({Key? key}) : super(key: key);
 
   @override
   _MainPageState createState() => _MainPageState();
 }
 
-class _MainPageState extends State<MainPage>
-    with SingleTickerProviderStateMixin {
-  static const _indicatorSize = 150.0;
-  final _helper = IndicatorStateHelper();
-
-  bool _renderCompleteState = false;
-
-  ScrollDirection prevScrollDiretion = ScrollDirection.idle;
-
+class _MainPageState extends State<MainPage> {
   @override
   void initState() {
     super.initState();
@@ -154,16 +141,8 @@ class _MainPageState extends State<MainPage>
         ],
       ),
       drawer: Drawer(),
-      body: CustomRefreshIndicator(
-        child: widget.child,
-        builder: (
-          BuildContext context,
-          Widget child,
-          IndicatorController controller,
-        ) {
-          return pageList[_selectedIndex];
-        },
-        onRefresh: _onRefresh,
+      body: SingleChildScrollView(
+        child: pageList[_selectedIndex],
       ),
       bottomNavigationBar: BottomNavigationBar(
         selectedLabelStyle: const TextStyle(
