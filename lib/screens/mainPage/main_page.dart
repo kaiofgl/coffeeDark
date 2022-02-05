@@ -1,19 +1,15 @@
 import 'package:coffeedark/components/colors.dart';
 import 'package:coffeedark/screens/cartPage/cartPage.dart';
-import 'package:coffeedark/screens/favoritePage/favoritesPage.dart';
-import 'package:coffeedark/screens/homePage/homePage.dart';
-import 'package:coffeedark/screens/profilePage/profilePage.dart';
+import 'package:coffeedark/screens/favoritePage/favorites_page.dart';
+import 'package:coffeedark/screens/homePage/home_page.dart';
+import 'package:coffeedark/screens/profilePage/profile_page.dart';
 import 'package:coffeedark/screens/videosPage/videosPage.dart';
-import 'package:custom_refresh_indicator/custom_refresh_indicator.dart';
 import 'package:flutter/material.dart';
 // import 'package:custom'
 
-import 'dart:developer';
-
-import 'package:flutter/rendering.dart';
 
 class MainPage extends StatefulWidget {
-  MainPage({Key? key}) : super(key: key);
+  const MainPage({Key? key}) : super(key: key);
 
   @override
   _MainPageState createState() => _MainPageState();
@@ -23,7 +19,6 @@ class _MainPageState extends State<MainPage> {
   @override
   void initState() {
     super.initState();
-    print("chego");
   }
 
   int _selectedIndex = 0;

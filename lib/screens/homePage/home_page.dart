@@ -1,8 +1,9 @@
-import 'dart:developer';
 import 'package:coffeedark/components/BottomSheet/bottomSheet.dart';
 import 'package:coffeedark/components/colors.dart';
 import 'package:coffeedark/components/textStyle.dart';
 import 'package:flutter/material.dart';
+
+import 'component/products_list.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -12,52 +13,146 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  FocusNode _focus = FocusNode();
-
-  bool _hasFocus = false;
+  final FocusNode _focus = FocusNode();
 
   int listSelected = 0;
 
   var listCategories = {
-    'Capuccino': 0,
-    'Café Gelado': 1,
-    'Espresso': 2,
+    0: 'Capuccino',
+    1: 'Café',
+    2: 'Mocha',
   };
 
   var listProductsGarnish = {
     'Chocolate': 0,
     'Ovomaltine': 1,
   };
-  var products = {
-    0: {
+  var products = [
+    {
       'product_id': 0,
-      'product_name': 'Capuccino Gelado',
+      'product_name': 'Capuccino Vert',
       'listCategoriesId': 0,
+      'with': 'chocolate',
       'listProductsGarnishId': {
         0: 0,
       },
-      'price': 50,
+      'price': 9.50,
       'rate': 4.7,
       'photo_path':
           'https://st2.depositphotos.com/5355656/7813/i/600/depositphotos_78138608-stock-photo-a-cup-of-cappuccino.jpg'
     },
-    1: {
+    {
       'product_id': 1,
-      'product_name': 'Café Gelado Com Chocolate',
-      'listCategoriesId': 1,
+      'product_name': 'Capuccino Lazer',
+      'listCategoriesId': 0,
+      'with': 'chocolate',
       'listProductsGarnishId': {
         0: 0,
       },
-      'price': 37,
+      'price': 12.50,
       'rate': 4.7,
       'photo_path':
-          'https://www.anamariabrogui.com.br/assets/uploads/receitas/fotos/usuario-3367-d703592442b3b2d13c64c42e499fab06.jpg'
+          'https://www.reservademinas.com.br/wp-content/uploads/04_06blog.png'
     },
-  };
+    {
+      'product_id': 2,
+      'product_name': 'Capuccino La Santa',
+      'listCategoriesId': 0,
+      'with': 'chocolate',
+      'listProductsGarnishId': {
+        0: 0,
+      },
+      'price': 7.0,
+      'rate': 4.7,
+      'photo_path':
+          'https://s2.glbimg.com/8SHT9Lh49jd5lHDquh24AMSBflk=/0x0:1280x853/924x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_e84042ef78cb4708aeebdf1c68c6cbd6/internal_photos/bs/2020/A/6/5aZNebQ1qUwUjiZdQRWg/capuccino.jpeg'
+    },
+    {
+      'product_id': 3,
+      'product_name': 'Capuccino La',
+      'listCategoriesId': 0,
+      'with': 'chocolate',
+      'listProductsGarnishId': {
+        0: 0,
+      },
+      'price': 12.50,
+      'rate': 4.7,
+      'photo_path':
+          'https://media-cdn.tripadvisor.com/media/photo-s/12/9c/55/46/cappuccino-viriato-com.jpg'
+    },
+    {
+      'product_id': 4,
+      'product_name': 'Café Preto',
+      'listCategoriesId': 1,
+      'with': 'chocolate',
+      'listProductsGarnishId': {
+        0: 0,
+      },
+      'price': 8.50,
+      'rate': 4.7,
+      'photo_path':
+          'http://s2.glbimg.com/P6Nn4AXYPq-K1Xek4cCKyONYYyA=/e.glbimg.com/og/ed/f/original/2014/01/15/cafe.jpg'
+    },
+    {
+      'product_id': 5,
+      'product_name': 'Café Sem Açucar',
+      'listCategoriesId': 1,
+      'with': 'chocolate',
+      'listProductsGarnishId': {
+        0: 0,
+      },
+      'price': 8.50,
+      'rate': 4.7,
+      'photo_path':
+          'https://blog.bicafebrasil.com.br/wp-content/uploads/2021/06/6-CAPA1-BCF-500p-cafe-sem-acucar.jpg'
+    },
+    {
+      'product_id': 6,
+      'product_name': 'Mocha La Sante',
+      'listCategoriesId': 2,
+      'with': 'chocolate',
+      'listProductsGarnishId': {
+        0: 0,
+      },
+      'price': 11.50,
+      'rate': 4.7,
+      'photo_path':
+          'https://perfectdailygrind.com/wp-content/uploads/2020/09/Mocha-4.jpg'
+    },
+    {
+      'product_id': 7,
+      'product_name': 'Mocha Santan',
+      'listCategoriesId': 2,
+      'with': 'chocolate',
+      'listProductsGarnishId': {
+        0: 0,
+      },
+      'price': 11.50,
+      'rate': 4.7,
+      'photo_path':
+          'https://i2.wp.com/www.franchiseindiaweb.in/wp-content/uploads/2016/11/Cafe-Mocha.jpg?fit=483%2C400&ssl=1'
+    },
+    {
+      'product_id': 8,
+      'product_name': 'Mocha Premium',
+      'listCategoriesId': 2,
+      'with': 'chocolate',
+      'listProductsGarnishId': {
+        0: 0,
+      },
+      'price': 15.00,
+      'rate': 4.7,
+      'photo_path':
+          'https://i.pinimg.com/originals/ff/92/24/ff922424b61d6d1af9f4e8a0b58ee1f8.jpg'
+    },
+  ];
+
+  var actualProductList = [];
   @override
   void initState() {
     super.initState();
     _focus.addListener(_onFocusChange);
+    changeActualListProducts(0);
   }
 
   @override
@@ -68,21 +163,26 @@ class _HomePageState extends State<HomePage> {
   }
 
   void _onFocusChange() {
-    setState(() {
-      _hasFocus = _focus.hasFocus;
-    });
+    setState(() {});
+  }
+
+  void changeActualListProducts(int index) {
+    actualProductList = [];
+    for (var map in products) {
+      if (map["listCategoriesId"] == index) {
+        actualProductList.add(map);
+      }
+    }
   }
 
   void _onCategoriesClick(int index) {
-    setState(() {
-      listSelected = index;
-    });
-    // _findList(listSelected);
+    setState(
+      () {
+        listSelected = index;
+        changeActualListProducts(index);
+      },
+    );
   }
-
-  // Map<String, dynamic> _findList(int listSelected) {
-  //   // return 1;
-  // }
 
   @override
   Widget build(BuildContext context) {
@@ -101,7 +201,7 @@ class _HomePageState extends State<HomePage> {
             height: 50,
             child: Text(
               "Boa tarde, Kaio",
-              style: h1_textStyle(),
+              style: h1TextStyle(),
             ),
           ),
         ),
@@ -123,7 +223,7 @@ class _HomePageState extends State<HomePage> {
                       prefixIcon: const Icon(Icons.search),
                       filled: true,
                       labelText: "Pesquisar café",
-                      labelStyle: label_textStyle(),
+                      labelStyle: labelTextStyle(),
                       enabledBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(50),
                         borderSide: const BorderSide(
@@ -183,7 +283,7 @@ class _HomePageState extends State<HomePage> {
                 alignment: Alignment.centerLeft,
                 child: Text(
                   "Categorias",
-                  style: h2_textStyle(),
+                  style: h2TextStyle(),
                 ),
               ),
             ),
@@ -212,8 +312,6 @@ class _HomePageState extends State<HomePage> {
                                 color: Colors.black,
                                 width: 2.0,
                               ),
-
-                        // color: Colors.red,
                         borderRadius: BorderRadius.circular(50),
                       ),
                       child: InkWell(
@@ -228,7 +326,7 @@ class _HomePageState extends State<HomePage> {
                           width: width / 3,
                           child: Center(
                             child: Text(
-                              entryList[index].key,
+                              entryList[index].value,
                               style: TextStyle(
                                 color: (listSelected == index)
                                     ? Colors.white
@@ -251,103 +349,15 @@ class _HomePageState extends State<HomePage> {
                 top: paddingGlobal,
               ),
               child: SizedBox(
-                height: 200,
+                height: 250,
                 child: ListView.builder(
                   scrollDirection: Axis.horizontal,
-                  itemCount: 4,
+                  itemCount: actualProductList.length,
                   itemBuilder: (context, index) {
-                    return Padding(
-                      padding: const EdgeInsets.only(
-                        left: 15,
-                        right: 15,
-                      ),
-                      child: Container(
-                        decoration: BoxDecoration(
-                          color: const Color(0xffF4F4F4),
-                          borderRadius: BorderRadius.circular(30),
-                        ),
-                        height: 200,
-                        width: 130,
-                        child: Column(
-                          children: [
-                            SizedBox(
-                              height: 110,
-                              child: ClipRRect(
-                                borderRadius: BorderRadius.circular(30),
-                                child: Image.network(
-                                  "https://www.anamariabrogui.com.br/assets/uploads/receitas/fotos/usuario-3367-d703592442b3b2d13c64c42e499fab06.jpg",
-                                  fit: BoxFit.cover,
-                                ),
-                              ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.only(
-                                top: 15.0,
-                                left: 15.0,
-                                right: 15.0,
-                              ),
-                              child: Container(
-                                alignment: Alignment.centerLeft,
-                                child: Text(
-                                  "Capuccino",
-                                  style: product_title_textStyle(),
-                                ),
-                              ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.only(
-                                left: 15.0,
-                                right: 15.0,
-                              ),
-                              child: Container(
-                                alignment: Alignment.centerLeft,
-                                child: Text(
-                                  "Com chocolate",
-                                  style: product_garnish_textStyle(),
-                                ),
-                              ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.only(
-                                left: 15.0,
-                                right: 15.0,
-                              ),
-                              child: Container(
-                                height: 40,
-                                alignment: Alignment.centerLeft,
-                                child: Row(
-                                  children: [
-                                    Text(
-                                      "R\$",
-                                      style: product_price_textStyle(15.0),
-                                    ),
-                                    Text(
-                                      "9,90",
-                                      style: product_price_textStyle(20.0),
-                                    ),
-                                    Expanded(
-                                      child: Container(
-                                        alignment: Alignment.centerRight,
-                                        height: 20,
-                                        width: 20,
-                                        child: FloatingActionButton(
-                                          backgroundColor: mainThemeColor,
-                                          onPressed: () {},
-                                          child: const Icon(
-                                            Icons.add,
-                                            size: 20,
-                                            color: Colors.white,
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
+                    Map<String, dynamic> product =
+                        actualProductList[index] as Map<String, dynamic>;
+                    return ProductItem(
+                      list: product,
                     );
                   },
                 ),
@@ -361,7 +371,7 @@ class _HomePageState extends State<HomePage> {
             alignment: Alignment.centerLeft,
             child: Text(
               "Ofertas Especiais",
-              style: h2_textStyle(),
+              style: h2TextStyle(),
             ),
           ),
         ),
@@ -398,14 +408,14 @@ class _HomePageState extends State<HomePage> {
                         child: Container(
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(20),
-                            color: Color(0xffDEBB99),
+                            color: const Color(0xffDEBB99),
                           ),
                           child: SizedBox(
                             child: Padding(
-                              padding: EdgeInsets.all(8.0),
+                              padding: const EdgeInsets.all(8.0),
                               child: Text(
                                 "Descontos de Venda",
-                                style: descounts_title_textStyle(),
+                                style: descountsTitleTextStyle(),
                               ),
                             ),
                           ),
@@ -415,7 +425,7 @@ class _HomePageState extends State<HomePage> {
                         padding: EdgeInsets.all(paddingGlobal),
                         child: Text(
                           "Aqui você encontra as nossas ofertas especiais!",
-                          style: descounts_textStyle(),
+                          style: descountsTextStyle(),
                         ),
                       ),
                     ],
