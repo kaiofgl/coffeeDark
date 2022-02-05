@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import '../../../components/colors.dart';
-import '../../../components/textStyle.dart';
+import 'package:coffeedark/components/colors.dart';
+import 'package:coffeedark/components/text_style.dart';
 import 'package:intl/intl.dart';
+import 'package:coffeedark/bloc/cart_bloc.dart';
 
 class ProductItem extends StatelessWidget {
   ProductItem({
@@ -29,7 +30,7 @@ class ProductItem extends StatelessWidget {
               ),
               height: 210,
               width: 130,
-              child: Text('Sem produtos'),
+              child: const Text('Sem produtos'),
             )
           : Container(
               decoration: BoxDecoration(
@@ -111,7 +112,7 @@ class ProductItem extends StatelessWidget {
                                   borderRadius: BorderRadius.circular(30),
                                 ),
                                 onTap: () {
-                                  print("index");
+                                  bloc.addCart(list);
                                 },
                                 child: SizedBox(
                                   child: Center(
