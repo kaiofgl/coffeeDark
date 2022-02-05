@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "/home/kaio-ubuntu/Documentos/dev/coffeedark/build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-v28/values-v28.xml",
+            "outputFile": "/home/kfegolaz/Documents/development/coffeeDark/build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-v28/values-v28.xml",
             "map": [
                 {
-                    "source": "/home/kaio-ubuntu/.gradle/caches/transforms-2/files-2.1/f419bf2442c9ba50831eeba89000c9a9/appcompat-1.1.0/res/values-v28/values-v28.xml",
+                    "source": "/home/kfegolaz/.gradle/caches/transforms-2/files-2.1/1729610d030977dce8856d24bcddf4c4/appcompat-1.1.0/res/values-v28/values-v28.xml",
                     "from": {
                         "startLines": "2,3,4,8",
                         "startColumns": "4,4,4,4",

@@ -12,13 +12,13 @@
 12         to allow setting breakpoints, to provide hot reload, etc.
 13    -->
 14    <uses-permission android:name="android.permission.INTERNET" />
-14-->/home/kaio-ubuntu/Documentos/dev/coffeedark/android/app/src/debug/AndroidManifest.xml:6:5-66
-14-->/home/kaio-ubuntu/Documentos/dev/coffeedark/android/app/src/debug/AndroidManifest.xml:6:22-64
+14-->/home/kfegolaz/Documents/development/coffeeDark/android/app/src/debug/AndroidManifest.xml:6:5-66
+14-->/home/kfegolaz/Documents/development/coffeeDark/android/app/src/debug/AndroidManifest.xml:6:22-64
 15
 16    <application
 17        android:name="android.app.Application"
 18        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
-18-->[androidx.core:core:1.6.0] /home/kaio-ubuntu/.gradle/caches/transforms-2/files-2.1/5f663b08eec19eef9a9d1af662d9025e/core-1.6.0/AndroidManifest.xml:24:18-86
+18-->[androidx.core:core:1.6.0] /home/kfegolaz/.gradle/caches/transforms-2/files-2.1/122df2e57d294d1a53db26bbc3b813c1/core-1.6.0/AndroidManifest.xml:24:18-86
 19        android:debuggable="true"
 20        android:icon="@mipmap/ic_launcher"
 21        android:label="coffeedark" >
@@ -56,12 +56,25 @@
 53            android:value="2" />
 54
 55        <activity
-55-->[:flutter_youtube] /home/kaio-ubuntu/Documentos/dev/coffeedark/build/flutter_youtube/intermediates/library_manifest/debug/AndroidManifest.xml:9:9-12:20
+55-->[:flutter_youtube] /home/kfegolaz/Documents/development/coffeeDark/build/flutter_youtube/intermediates/library_manifest/debug/AndroidManifest.xml:9:9-12:20
 56            android:name="io.github.ponnamkarthik.flutteryoutube.PlayerActivity"
-56-->[:flutter_youtube] /home/kaio-ubuntu/Documentos/dev/coffeedark/build/flutter_youtube/intermediates/library_manifest/debug/AndroidManifest.xml:10:13-81
+56-->[:flutter_youtube] /home/kfegolaz/Documents/development/coffeeDark/build/flutter_youtube/intermediates/library_manifest/debug/AndroidManifest.xml:10:13-81
 57            android:configChanges="orientation|screenSize|keyboardHidden|navigation" >
-57-->[:flutter_youtube] /home/kaio-ubuntu/Documentos/dev/coffeedark/build/flutter_youtube/intermediates/library_manifest/debug/AndroidManifest.xml:11:13-85
+57-->[:flutter_youtube] /home/kfegolaz/Documents/development/coffeeDark/build/flutter_youtube/intermediates/library_manifest/debug/AndroidManifest.xml:11:13-85
 58        </activity>
-59    </application>
-60
-61</manifest>
+59
+60        <uses-library
+60-->[androidx.window:window:1.0.0-beta04] /home/kfegolaz/.gradle/caches/transforms-2/files-2.1/03c633e46d75bfb21f082f0417f55161/jetified-window-1.0.0-beta04/AndroidManifest.xml:25:9-27:40
+61            android:name="androidx.window.extensions"
+61-->[androidx.window:window:1.0.0-beta04] /home/kfegolaz/.gradle/caches/transforms-2/files-2.1/03c633e46d75bfb21f082f0417f55161/jetified-window-1.0.0-beta04/AndroidManifest.xml:26:13-54
+62            android:required="false" />
+62-->[androidx.window:window:1.0.0-beta04] /home/kfegolaz/.gradle/caches/transforms-2/files-2.1/03c633e46d75bfb21f082f0417f55161/jetified-window-1.0.0-beta04/AndroidManifest.xml:27:13-37
+63        <uses-library
+63-->[androidx.window:window:1.0.0-beta04] /home/kfegolaz/.gradle/caches/transforms-2/files-2.1/03c633e46d75bfb21f082f0417f55161/jetified-window-1.0.0-beta04/AndroidManifest.xml:28:9-30:40
+64            android:name="androidx.window.sidecar"
+64-->[androidx.window:window:1.0.0-beta04] /home/kfegolaz/.gradle/caches/transforms-2/files-2.1/03c633e46d75bfb21f082f0417f55161/jetified-window-1.0.0-beta04/AndroidManifest.xml:29:13-51
+65            android:required="false" />
+65-->[androidx.window:window:1.0.0-beta04] /home/kfegolaz/.gradle/caches/transforms-2/files-2.1/03c633e46d75bfb21f082f0417f55161/jetified-window-1.0.0-beta04/AndroidManifest.xml:30:13-37
+66    </application>
+67
+68</manifest>
