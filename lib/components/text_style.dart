@@ -31,6 +31,14 @@ TextStyle productTitleTextStyle() {
   );
 }
 
+TextStyle bottomSheetTitleTextStyle() {
+  return const TextStyle(
+    fontFamily: 'Publica Sans',
+    fontWeight: FontWeight.w800,
+    fontSize: 23,
+  );
+}
+
 TextStyle productGarnishTextStyle() {
   return const TextStyle(
     fontFamily: 'Publica Sans',

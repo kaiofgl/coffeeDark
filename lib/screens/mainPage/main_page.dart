@@ -1,12 +1,14 @@
 import 'package:coffeedark/components/colors.dart';
-import 'package:coffeedark/screens/cartPage/cartPage.dart';
+import 'package:coffeedark/screens/cartPage/cart_page.dart';
 import 'package:coffeedark/screens/favoritePage/favorites_page.dart';
 import 'package:coffeedark/screens/homePage/home_page.dart';
 import 'package:coffeedark/screens/profilePage/profile_page.dart';
-import 'package:coffeedark/screens/videosPage/videosPage.dart';
+import 'package:coffeedark/screens/videosPage/videos_page.dart';
 import 'package:flutter/material.dart';
-// import 'package:custom'
+import 'package:coffeedark/bloc/cart_bloc.dart';
 
+import '../../components/BottomSheet/bottom_sheet.dart';
+// import 'package:custom'
 
 class MainPage extends StatefulWidget {
   const MainPage({Key? key}) : super(key: key);
@@ -23,7 +25,7 @@ class _MainPageState extends State<MainPage> {
 
   int _selectedIndex = 0;
 
-  bool _logged_in = false;
+  final bool _loggedIn = false;
 
   String nameCity = "Franca";
   String nameState = "São Paulo";
@@ -44,9 +46,9 @@ class _MainPageState extends State<MainPage> {
     });
   }
 
-  Future<void> _onRefresh() async {
-    print("refresh");
-  }
+  // Future<void> _onRefresh() async {
+  //   print("refresh");
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -63,7 +65,7 @@ class _MainPageState extends State<MainPage> {
           child: InkWell(
             borderRadius: BorderRadius.circular(50),
             child: Center(
-              child: (_logged_in == true)
+              child: (_loggedIn == true)
                   ? const Icon(
                       Icons.person,
                       color: Colors.black,
@@ -135,9 +137,40 @@ class _MainPageState extends State<MainPage> {
           ),
         ],
       ),
-      drawer: Drawer(),
-      body: SingleChildScrollView(
-        child: pageList[_selectedIndex],
+      drawer: const Drawer(),
+      body: IndexedStack(
+        index: _selectedIndex,
+        children: pageList,
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          showModalBottomSheet(
+            shape: const RoundedRectangleBorder(
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(20),
+                topRight: Radius.circular(20),
+              ),
+            ),
+            context: context,
+            builder: (context) {
+              return bottomSheetCart(context);
+            },
+          );
+        },
+        backgroundColor: secondaryThemeColor,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            StreamBuilder(
+              initialData: 0,
+              stream: bloc.cartItens,
+              builder: (context, snapshot) {
+                return Text(bloc.itensCart.length.toString());
+              },
+            ),
+            const Icon(Icons.shopping_bag_sharp)
+          ],
+        ),
       ),
       bottomNavigationBar: BottomNavigationBar(
         selectedLabelStyle: const TextStyle(

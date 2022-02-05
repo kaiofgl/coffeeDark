@@ -1,8 +1,7 @@
-import 'package:coffeedark/components/BottomSheet/bottomSheet.dart';
+import 'package:coffeedark/components/BottomSheet/bottom_sheet.dart';
 import 'package:coffeedark/components/colors.dart';
-import 'package:coffeedark/components/textStyle.dart';
+import 'package:coffeedark/components/text_style.dart';
 import 'package:flutter/material.dart';
-
 import 'component/products_list.dart';
 
 class HomePage extends StatefulWidget {
@@ -188,254 +187,262 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
 
-    return Column(
-      children: [
-        Padding(
-          padding: EdgeInsets.only(
-            left: paddingGlobal,
-            right: paddingGlobal,
-            top: paddingGlobal,
-          ),
-          child: Container(
-            alignment: Alignment.centerLeft,
-            height: 50,
-            child: Text(
-              "Boa tarde, Kaio",
-              style: h1TextStyle(),
+    return SingleChildScrollView(
+      child: Column(
+        children: [
+          Padding(
+            padding: EdgeInsets.only(
+              left: paddingGlobal,
+              right: paddingGlobal,
+              top: paddingGlobal,
+            ),
+            child: Container(
+              alignment: Alignment.centerLeft,
+              height: 50,
+              child: Text(
+                "Boa tarde, Kaio",
+                style: h1TextStyle(),
+              ),
             ),
           ),
-        ),
-        Padding(
-          padding: EdgeInsets.only(
-            left: paddingGlobal,
-            right: paddingGlobal,
-          ),
-          child: Row(
-            children: [
-              Expanded(
-                child: SizedBox(
-                  height: 50,
-                  child: TextField(
-                    focusNode: _focus,
-                    decoration: InputDecoration(
-                      fillColor: const Color(0xffF4F4F4),
-                      focusColor: Colors.blue,
-                      prefixIcon: const Icon(Icons.search),
-                      filled: true,
-                      labelText: "Pesquisar café",
-                      labelStyle: labelTextStyle(),
-                      enabledBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(50),
-                        borderSide: const BorderSide(
-                          width: 0.0,
-                          color: Colors.transparent,
+          Padding(
+            padding: EdgeInsets.only(
+              left: paddingGlobal,
+              right: paddingGlobal,
+            ),
+            child: Row(
+              children: [
+                Expanded(
+                  child: SizedBox(
+                    height: 50,
+                    child: TextField(
+                      focusNode: _focus,
+                      decoration: InputDecoration(
+                        fillColor: const Color(0xffF4F4F4),
+                        focusColor: Colors.blue,
+                        prefixIcon: const Icon(Icons.search),
+                        filled: true,
+                        labelText: "Pesquisar café",
+                        labelStyle: labelTextStyle(),
+                        enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(50),
+                          borderSide: const BorderSide(
+                            width: 0.0,
+                            color: Colors.transparent,
+                          ),
                         ),
-                      ),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(50),
-                        borderSide: const BorderSide(
-                          width: 20.0,
-                          color: Colors.red,
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(50),
+                          borderSide: const BorderSide(
+                            width: 20.0,
+                            color: Colors.red,
+                          ),
                         ),
                       ),
                     ),
                   ),
                 ),
-              ),
-              (_focus.hasFocus)
-                  ? Container()
-                  : Padding(
-                      padding: EdgeInsets.only(
-                        left: paddingGlobal,
-                      ),
-                      child: SizedBox(
-                        height: 50,
-                        width: 50,
-                        child: Ink(
-                          padding: EdgeInsets.zero,
-                          child: InkWell(
-                            borderRadius: BorderRadius.circular(50),
-                            onTap: () {
-                              showModalBottomSheet(
+                (_focus.hasFocus)
+                    ? Container()
+                    : Padding(
+                        padding: EdgeInsets.only(
+                          left: paddingGlobal,
+                        ),
+                        child: SizedBox(
+                          height: 50,
+                          width: 50,
+                          child: Ink(
+                            padding: EdgeInsets.zero,
+                            child: InkWell(
+                              borderRadius: BorderRadius.circular(50),
+                              onTap: () {
+                                showModalBottomSheet(
                                   shape: const RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.only(
-                                    topLeft: Radius.circular(20),
-                                    topRight: Radius.circular(20),
-                                  )),
+                                    borderRadius: BorderRadius.only(
+                                      topLeft: Radius.circular(20),
+                                      topRight: Radius.circular(20),
+                                    ),
+                                  ),
                                   context: context,
                                   builder: (context) {
                                     return bottomSheetFilters();
-                                  });
-                            },
-                            child: const Icon(Icons.person),
+                                  },
+                                );
+                              },
+                              child: const Icon(Icons.person),
+                            ),
                           ),
                         ),
                       ),
-                    ),
-            ],
+              ],
+            ),
           ),
-        ),
-        Column(
-          children: [
-            Padding(
-              padding: EdgeInsets.all(paddingGlobal),
-              child: Container(
-                alignment: Alignment.centerLeft,
-                child: Text(
-                  "Categorias",
-                  style: h2TextStyle(),
+          Column(
+            children: [
+              Padding(
+                padding: EdgeInsets.all(
+                  paddingGlobal,
+                ),
+                child: Container(
+                  alignment: Alignment.centerLeft,
+                  child: Text(
+                    "Categorias",
+                    style: h2TextStyle(),
+                  ),
                 ),
               ),
-            ),
-            SizedBox(
-              height: 50,
-              child: ListView.builder(
-                scrollDirection: Axis.horizontal,
-                itemCount: listCategories.length,
-                itemBuilder: (context, index) {
-                  var entryList = listCategories.entries.toList();
-                  return Padding(
-                    padding: const EdgeInsets.only(
-                      left: 8.0,
-                      right: 8.0,
-                    ),
-                    child: Ink(
-                      decoration: BoxDecoration(
-                        color: (listSelected == index)
-                            ? mainThemeColor
-                            : Colors.white,
-                        border: (listSelected == index)
-                            ? Border.all(
-                                width: 0.0,
-                              )
-                            : Border.all(
-                                color: Colors.black,
-                                width: 2.0,
-                              ),
-                        borderRadius: BorderRadius.circular(50),
-                      ),
-                      child: InkWell(
-                        customBorder: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(30),
+              SizedBox(
+                height: 50,
+                child: ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  itemCount: listCategories.length,
+                  itemBuilder: (context, index) {
+                    var entryList = listCategories.entries.toList();
+                    return Material(
+                      child: Padding(
+                        padding: const EdgeInsets.only(
+                          left: 8.0,
+                          right: 8.0,
                         ),
-                        borderRadius: BorderRadius.circular(50),
-                        onTap: () {
-                          _onCategoriesClick(index);
-                        },
-                        child: SizedBox(
-                          width: width / 3,
-                          child: Center(
-                            child: Text(
-                              entryList[index].value,
-                              style: TextStyle(
-                                color: (listSelected == index)
-                                    ? Colors.white
-                                    : Colors.black,
-                                fontFamily: 'Publica Sans',
-                                fontWeight: FontWeight.w300,
-                                fontSize: 16,
+                        child: Ink(
+                          decoration: BoxDecoration(
+                            color: (listSelected == index)
+                                ? mainThemeColor
+                                : Colors.white,
+                            border: (listSelected == index)
+                                ? Border.all(
+                                    width: 0.0,
+                                  )
+                                : Border.all(
+                                    color: Colors.black,
+                                    width: 2.0,
+                                  ),
+                            borderRadius: BorderRadius.circular(50),
+                          ),
+                          child: InkWell(
+                            customBorder: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(30),
+                            ),
+                            borderRadius: BorderRadius.circular(50),
+                            onTap: () {
+                              _onCategoriesClick(index);
+                            },
+                            child: SizedBox(
+                              width: width / 3,
+                              child: Center(
+                                child: Text(
+                                  entryList[index].value,
+                                  style: TextStyle(
+                                    color: (listSelected == index)
+                                        ? Colors.white
+                                        : Colors.black,
+                                    fontFamily: 'Publica Sans',
+                                    fontWeight: FontWeight.w300,
+                                    fontSize: 16,
+                                  ),
+                                ),
                               ),
                             ),
                           ),
                         ),
                       ),
-                    ),
-                  );
-                },
-              ),
-            ),
-            Padding(
-              padding: EdgeInsets.only(
-                top: paddingGlobal,
-              ),
-              child: SizedBox(
-                height: 250,
-                child: ListView.builder(
-                  scrollDirection: Axis.horizontal,
-                  itemCount: actualProductList.length,
-                  itemBuilder: (context, index) {
-                    Map<String, dynamic> product =
-                        actualProductList[index] as Map<String, dynamic>;
-                    return ProductItem(
-                      list: product,
                     );
                   },
                 ),
               ),
-            ),
-          ],
-        ),
-        Padding(
-          padding: EdgeInsets.all(paddingGlobal),
-          child: Container(
-            alignment: Alignment.centerLeft,
-            child: Text(
-              "Ofertas Especiais",
-              style: h2TextStyle(),
-            ),
-          ),
-        ),
-        Padding(
-          padding: EdgeInsets.only(
-            left: paddingGlobal,
-            right: paddingGlobal,
-          ),
-          child: Container(
-            decoration: BoxDecoration(
-              color: const Color(0xffF4F4F4),
-              borderRadius: BorderRadius.circular(30),
-            ),
-            height: 180,
-            width: width,
-            child: Row(
-              children: [
-                SizedBox(
-                  height: 180,
-                  width: 130,
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(30),
-                    child: Image.network(
-                      "https://www.anamariabrogui.com.br/assets/uploads/receitas/fotos/usuario-3367-d703592442b3b2d13c64c42e499fab06.jpg",
-                      fit: BoxFit.cover,
-                    ),
+              Padding(
+                padding: EdgeInsets.only(
+                  top: paddingGlobal,
+                ),
+                child: SizedBox(
+                  height: 250,
+                  child: ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    itemCount: actualProductList.length,
+                    itemBuilder: (context, index) {
+                      Map<String, dynamic> product =
+                          actualProductList[index] as Map<String, dynamic>;
+                      return ProductItem(
+                        list: product,
+                      );
+                    },
                   ),
                 ),
-                Expanded(
-                  child: Column(
-                    children: [
-                      Padding(
-                        padding: EdgeInsets.only(top: paddingGlobal),
-                        child: Container(
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(20),
-                            color: const Color(0xffDEBB99),
-                          ),
-                          child: SizedBox(
-                            child: Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Text(
-                                "Descontos de Venda",
-                                style: descountsTitleTextStyle(),
+              ),
+            ],
+          ),
+          Padding(
+            padding: EdgeInsets.all(paddingGlobal),
+            child: Container(
+              alignment: Alignment.centerLeft,
+              child: Text(
+                "Ofertas Especiais",
+                style: h2TextStyle(),
+              ),
+            ),
+          ),
+          Padding(
+            padding: EdgeInsets.only(
+              left: paddingGlobal,
+              right: paddingGlobal,
+            ),
+            child: Container(
+              decoration: BoxDecoration(
+                color: const Color(0xffF4F4F4),
+                borderRadius: BorderRadius.circular(30),
+              ),
+              height: 180,
+              width: width,
+              child: Row(
+                children: [
+                  SizedBox(
+                    height: 180,
+                    width: 130,
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(30),
+                      child: Image.network(
+                        "https://www.anamariabrogui.com.br/assets/uploads/receitas/fotos/usuario-3367-d703592442b3b2d13c64c42e499fab06.jpg",
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    child: Column(
+                      children: [
+                        Padding(
+                          padding: EdgeInsets.only(top: paddingGlobal),
+                          child: Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(20),
+                              color: secondaryThemeColor,
+                            ),
+                            child: SizedBox(
+                              child: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Text(
+                                  "Descontos de Venda",
+                                  style: descountsTitleTextStyle(),
+                                ),
                               ),
                             ),
                           ),
                         ),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.all(paddingGlobal),
-                        child: Text(
-                          "Aqui você encontra as nossas ofertas especiais!",
-                          style: descountsTextStyle(),
+                        Padding(
+                          padding: EdgeInsets.all(paddingGlobal),
+                          child: Text(
+                            "Aqui você encontra as nossas ofertas especiais!",
+                            style: descountsTextStyle(),
+                          ),
                         ),
-                      ),
-                    ],
-                  ),
-                )
-              ],
+                      ],
+                    ),
+                  )
+                ],
+              ),
             ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }
