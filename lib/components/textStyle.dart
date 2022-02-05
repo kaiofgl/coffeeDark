@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-TextStyle h1_textStyle() {
+TextStyle h1TextStyle() {
   return const TextStyle(
     fontFamily: 'Publica Sans',
     fontWeight: FontWeight.w700,
@@ -9,7 +9,7 @@ TextStyle h1_textStyle() {
   );
 }
 
-TextStyle h2_textStyle() {
+TextStyle h2TextStyle() {
   return const TextStyle(
     fontFamily: 'Publica Sans',
     fontWeight: FontWeight.w700,
@@ -18,12 +18,12 @@ TextStyle h2_textStyle() {
   );
 }
 
-TextStyle label_textStyle() {
+TextStyle labelTextStyle() {
   return const TextStyle(
       fontFamily: 'Publica Sans', fontWeight: FontWeight.w500, fontSize: 14);
 }
 
-TextStyle product_title_textStyle() {
+TextStyle productTitleTextStyle() {
   return const TextStyle(
     fontFamily: 'Publica Sans',
     fontWeight: FontWeight.w500,
@@ -31,7 +31,7 @@ TextStyle product_title_textStyle() {
   );
 }
 
-TextStyle product_garnish_textStyle() {
+TextStyle productGarnishTextStyle() {
   return const TextStyle(
     fontFamily: 'Publica Sans',
     fontWeight: FontWeight.w400,
@@ -40,7 +40,7 @@ TextStyle product_garnish_textStyle() {
   );
 }
 
-TextStyle product_price_textStyle(double? sizeR) {
+TextStyle productPriceTextStyle(double? sizeR) {
   return TextStyle(
     fontFamily: 'Publica Sans',
     fontWeight: FontWeight.w400,
@@ -49,7 +49,7 @@ TextStyle product_price_textStyle(double? sizeR) {
   );
 }
 
-TextStyle descounts_title_textStyle() {
+TextStyle descountsTitleTextStyle() {
   return const TextStyle(
     fontFamily: 'Publica Sans',
     fontWeight: FontWeight.w500,
@@ -58,7 +58,7 @@ TextStyle descounts_title_textStyle() {
   );
 }
 
-TextStyle descounts_textStyle() {
+TextStyle descountsTextStyle() {
   return const TextStyle(
     fontFamily: 'Publica Sans',
     fontWeight: FontWeight.w500,

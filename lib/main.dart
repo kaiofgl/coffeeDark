@@ -1,6 +1,6 @@
 import 'package:flutter/services.dart';
 
-import 'screens/mainPage/mainPage.dart' show MainPage;
+import 'screens/mainPage/main_page.dart' show MainPage;
 import 'package:flutter/material.dart';
 
 void main() {

@@ -1,4 +1,4 @@
-#Tue Jan 18 21:52:16 BRT 2022
-base.0=/home/kaio-ubuntu/Documentos/dev/coffeedark/build/app/intermediates/dex/debug/mergeDexDebug/classes.dex
+#Fri Feb 04 19:03:26 BRT 2022
+base.0=/home/kfegolaz/Documents/development/coffeeDark/build/app/intermediates/dex/debug/mergeDexDebug/classes.dex
 renamed.0=classes.dex
 path.0=classes.dex

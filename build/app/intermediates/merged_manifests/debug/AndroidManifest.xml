@@ -56,6 +56,13 @@
             android:name="io.github.ponnamkarthik.flutteryoutube.PlayerActivity"
             android:configChanges="orientation|screenSize|keyboardHidden|navigation" >
         </activity>
+
+        <uses-library
+            android:name="androidx.window.extensions"
+            android:required="false" />
+        <uses-library
+            android:name="androidx.window.sidecar"
+            android:required="false" />
     </application>
 
 </manifest>
