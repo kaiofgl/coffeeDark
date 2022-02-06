@@ -1,7 +1,4 @@
 import 'dart:async';
-import 'dart:ui';
-
-import 'package:bloc_pattern/bloc_pattern.dart';
 
 class Cart {
   final StreamController _cartController = StreamController.broadcast();
