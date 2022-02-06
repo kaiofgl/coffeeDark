@@ -142,34 +142,37 @@ class _MainPageState extends State<MainPage> {
         index: _selectedIndex,
         children: pageList,
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          showModalBottomSheet(
-            shape: const RoundedRectangleBorder(
-              borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(20),
-                topRight: Radius.circular(20),
+      floatingActionButton: Visibility(
+        visible: (_selectedIndex == 2) ? false : true,
+        child: FloatingActionButton(
+          onPressed: () {
+            showModalBottomSheet(
+              shape: const RoundedRectangleBorder(
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(20),
+                  topRight: Radius.circular(20),
+                ),
               ),
-            ),
-            context: context,
-            builder: (context) {
-              return bottomSheetCart(context);
-            },
-          );
-        },
-        backgroundColor: secondaryThemeColor,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            StreamBuilder(
-              initialData: 0,
-              stream: bloc.cartItens,
-              builder: (context, snapshot) {
-                return Text(bloc.itensCart.length.toString());
+              context: context,
+              builder: (context) {
+                return bottomSheetCart(context);
               },
-            ),
-            const Icon(Icons.shopping_bag_sharp)
-          ],
+            );
+          },
+          backgroundColor: secondaryThemeColor,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              StreamBuilder(
+                initialData: 0,
+                stream: bloc.cartItens,
+                builder: (context, snapshot) {
+                  return Text(bloc.itensCart.length.toString());
+                },
+              ),
+              const Icon(Icons.shopping_bag_sharp)
+            ],
+          ),
         ),
       ),
       bottomNavigationBar: BottomNavigationBar(
